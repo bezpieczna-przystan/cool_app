@@ -2,4 +2,7 @@ language: ruby
 rvm:
 - 2.6.1
 before_install:
-- gem install bundler	- gem install bundler
+- gem install bundler
+before_script:
+- cp config/database.yml.ci config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
